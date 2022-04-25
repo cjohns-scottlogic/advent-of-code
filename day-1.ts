@@ -1,23 +1,24 @@
 import * as fs from "fs";
 import * as path from "path";
 
-const part1 = (input: string) => {
-  let floor = 0;
-  [...input].forEach((item) => {
-    if (item == "(") floor += 1;
-    else if (item == ")") floor -= 1;
-    else console.log(item);
-  });
-  return floor;
+const move = (move: string) => {
+  switch (move) {
+    case "(":
+      return Number(1);
+    case ")":
+      return Number(-1);
+    default:
+      return Number(0);
+  }
 };
+const part1 = (input: string) => [...input].map(move).reduce((p, c) => p + c);
 
 const part2 = (input: string) => {
   let floor = 0;
   let pos = 0;
   [...input].some((item) => {
     pos += 1;
-    if (item == "(") floor += 1;
-    else if (item == ")") floor -= 1;
+    floor += move(item);
     return floor < 0;
   });
   return pos;
