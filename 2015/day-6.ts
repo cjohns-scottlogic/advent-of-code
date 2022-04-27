@@ -1,7 +1,5 @@
-import { on } from "events";
 import * as fs from "fs";
 import * as path from "path";
-import { exit } from "process";
 
 enum Request {
   TurnOff,
