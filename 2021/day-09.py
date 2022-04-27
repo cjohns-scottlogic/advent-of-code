@@ -1,20 +1,20 @@
 from functools import reduce
+from itertools import product
 
 
 def find_low_points(heightmap, rows, cols):
     low_points = []
-    for r in range(0, rows):
-        for c in range(0, cols):
-            value = heightmap[r][c]
+    for r, c in product(range(rows), range(cols)):
+        value = heightmap[r][c]
 
-            above = heightmap[r - 1][c] if r > 0 else None
-            below = heightmap[r + 1][c] if r < rows - 1 else None
-            left = heightmap[r][c - 1] if c > 0 else None
-            right = heightmap[r][c + 1] if c < cols - 1 else None
+        above = heightmap[r - 1][c] if r > 0 else None
+        below = heightmap[r + 1][c] if r < rows - 1 else None
+        left = heightmap[r][c - 1] if c > 0 else None
+        right = heightmap[r][c + 1] if c < cols - 1 else None
 
-            others = filter(lambda x: x is not None, [above, below, left, right])
-            if value < min(others):
-                low_points.append(tuple([r, c, value]))
+        others = filter(lambda x: x is not None, [above, below, left, right])
+        if value < min(others):
+            low_points.append(tuple([r, c, value]))
 
     return low_points
 
@@ -69,14 +69,13 @@ with open("input-09.txt", "r") as f:
 
     basin_map = {}
 
-    for r in range(rows):
-        for c in range(cols):
-            basin = basins[r][c]
-            if basin:
-                if basin not in basin_map:
-                    basin_map[basin] = 1
-                else:
-                    basin_map[basin] += 1
+    for r, c in product(range(rows), range(cols)):
+        basin = basins[r][c]
+        if basin:
+            if basin not in basin_map:
+                basin_map[basin] = 1
+            else:
+                basin_map[basin] += 1
 
     print(
         "Part 2: {}".format(reduce(lambda p, c: p * c, sorted(basin_map.values())[-3:]))

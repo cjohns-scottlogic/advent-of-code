@@ -1,45 +1,42 @@
-from pydoc import doc
 from numpy import array
+from itertools import product
 
 
 def step(data):
     flashes = 0
-    for x in range(10):
-        for y in range(10):
-            data[x][y] += 1
+    for x, y in product(range(10), range(10)):
+        data[x][y] += 1
 
     flashed = True
     while flashed:
         flashed = False
-        for x in range(10):
-            for y in range(10):
-                if data[x][y] > 9:
-                    flashed = True
-                    flashes += 1
-                    data[x][y] = -1
-                    if x > 0 and data[x - 1][y] != -1:
-                        data[x - 1][y] += 1
-                    if x < 9 and data[x + 1][y] != -1:
-                        data[x + 1][y] += 1
-                    if y > 0 and data[x][y - 1] != -1:
-                        data[x][y - 1] += 1
-                    if y < 9 and data[x][y + 1] != -1:
-                        data[x][y + 1] += 1
-                    if x > 0 and y > 0 and data[x - 1][y - 1] != -1:
-                        data[x - 1][y - 1] += 1
-                    if x < 9 and y > 0 and data[x + 1][y - 1] != -1:
-                        data[x + 1][y - 1] += 1
-                    if x > 0 and y < 9 and data[x - 1][y + 1] != -1:
-                        data[x - 1][y + 1] += 1
-                    if x < 9 and y < 9 and data[x + 1][y + 1] != -1:
-                        data[x + 1][y + 1] += 1
+        for x, y in product(range(10), range(10)):
+            if data[x][y] > 9:
+                flashed = True
+                flashes += 1
+                data[x][y] = -1
+                if x > 0 and data[x - 1][y] != -1:
+                    data[x - 1][y] += 1
+                if x < 9 and data[x + 1][y] != -1:
+                    data[x + 1][y] += 1
+                if y > 0 and data[x][y - 1] != -1:
+                    data[x][y - 1] += 1
+                if y < 9 and data[x][y + 1] != -1:
+                    data[x][y + 1] += 1
+                if x > 0 and y > 0 and data[x - 1][y - 1] != -1:
+                    data[x - 1][y - 1] += 1
+                if x < 9 and y > 0 and data[x + 1][y - 1] != -1:
+                    data[x + 1][y - 1] += 1
+                if x > 0 and y < 9 and data[x - 1][y + 1] != -1:
+                    data[x - 1][y + 1] += 1
+                if x < 9 and y < 9 and data[x + 1][y + 1] != -1:
+                    data[x + 1][y + 1] += 1
 
     flashed = 0
-    for x in range(10):
-        for y in range(10):
-            if data[x][y] == -1:
-                flashed += 1
-                data[x][y] = 0
+    for x, y in product(range(10), range(10)):
+        if data[x][y] == -1:
+            flashed += 1
+            data[x][y] = 0
 
     return flashes, flashed
 

@@ -4,7 +4,6 @@ def find_paths(cavemap, paths, cave, search, small2):
         if x == "start":
             continue
         elif x == "end":
-            # p = s1 + [x]
             if s1 not in paths:
                 paths.append(s1)
         elif x.islower() and x in search:
