@@ -28,7 +28,7 @@ const part2 = (input: number[][]) =>
     )
     .reduce((p, c) => p + c, 0);
 
-fs.readFile(path.join(__dirname, "input-2.txt"), (err, data) => {
+fs.readFile(path.join(__dirname, "input-02.txt"), (err, data) => {
   if (err) throw err;
   let dims = data
     .toString()

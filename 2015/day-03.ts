@@ -59,7 +59,7 @@ const part2 = (data: string) => {
   return houses.size;
 };
 
-fs.readFile(path.join(__dirname, "input-3.txt"), (err, data) => {
+fs.readFile(path.join(__dirname, "input-03.txt"), (err, data) => {
   if (err) throw err;
 
   console.log("Part 1: " + part1(data.toString()));

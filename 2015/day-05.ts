@@ -33,7 +33,7 @@ const part2 = (names: string[]) =>
     return xyx && abab;
   }).length;
 
-fs.readFile(path.join(__dirname, "input-5.txt"), (err, data) => {
+fs.readFile(path.join(__dirname, "input-05.txt"), (err, data) => {
   if (err) throw err;
   var names = data.toString().split("\r\n");
 

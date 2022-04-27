@@ -100,7 +100,7 @@ const part2 = (commands: Command[]) => {
   return Array.from(brightness.values()).reduce((p, c) => p + c);
 };
 
-fs.readFile(path.join(__dirname, "input-6.txt"), (err, data) => {
+fs.readFile(path.join(__dirname, "input-06.txt"), (err, data) => {
   if (err) throw err;
   var commands = data
     .toString()
