@@ -34,8 +34,7 @@ fs.readFile(path.join(__dirname, "input-14.txt"), (err, data) => {
         /(.*) can fly (.*) km\/s for (\d*) seconds, but then must rest for (.*) seconds\./
       );
       if (match) {
-        var r = new Reindeer(match);
-        reindeer.push(r);
+        reindeer.push(new Reindeer(match));
       }
     });
 
